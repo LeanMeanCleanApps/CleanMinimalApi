@@ -3,13 +3,13 @@
   "profiles": {
     "CleanMinimalApi": {
       "commandName": "Project",
+      "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "scalar",
-      "applicationUrl": "https://localhost:7032;http://localhost:5032",
+      "applicationUrl": "https://localhost:8081;http://localhost:8080",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "local"
-      },
-      "dotnetRunMessages": true
+      }
     }
   }
 }
