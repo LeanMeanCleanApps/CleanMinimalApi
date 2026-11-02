@@ -28,10 +28,10 @@ Endpoints live in `src/Presentation/Endpoints/<Feature>Endpoints.cs`, one static
 3. Write the handler method: `[FromRoute]`, `[FromQuery]` and `[FromBody]` on every input, `[FromServices] ISender sender`, then `CancellationToken cancellationToken`. Optional query parameters with defaults go last.
 4. Return the narrowest `TypedResults` type: `Ok<T>`, `CreatedAtRoute<T>` (with the by-id route name) for creates, `NoContent` for updates and deletes.
 5. Bodies use a request class in `src/Presentation/Requests/` with XML docs and `<example>` values. Map it to the command in the endpoint.
-6. Add every new request or response type to `AppJsonSerializerContext` (`src/Presentation/Serialization/`) with `[JsonSerializable(typeof(...))]`, including `Page<T>` and `List<T>` forms.
+6. Add every new request or response type to `AppJsonSerializerContext` (`src/Presentation/Serialization/`) with `[JsonSerializable(typeof(...))]`, including `Page<T>` and `List<T>` forms (`json-serialization`).
 7. Document the method: `<summary>` (short, title case, shown as the operation name), `<remarks>` with a sentence or two and a sample request, `<param>` for each input except `sender` and the token, and a `<response code="...">` for each status.
 8. A new endpoints class is mapped in `WebApplicationExtensions.ConfigureApplication` under `#region MinimalApi`.
-9. Test it twice: a unit test calling the static method with a faked `ISender` (`tests/Presentation.Tests.Unit/Endpoints/`), and an integration test making the real request (`tests/Presentation.Tests.Integration/Endpoints/`).
+9. Test it twice: a unit test calling the static method with a faked `ISender` (`tests/Presentation.Tests.Unit/Endpoints/`), and an integration test making the real request (`tests/Presentation.Tests.Integration/Endpoints/`, see `presentation-integration-tests`). Cover every documented status code (`test-design`).
 
 ## Example
 

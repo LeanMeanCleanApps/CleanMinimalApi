@@ -24,7 +24,7 @@ Settings that exist today:
 | `ConnectionStrings:MovieReviews` | SQLite connection string. `Data Source=Name;Mode=Memory;Cache=Shared` keeps everything in memory. |
 | `Database:SeedSampleData` | Seed sample data into an empty database (`sample-data`). |
 | `Authentication:Authority`, `Authentication:Audience` | Turn on token authentication (`optional-token-auth`). |
-| `Serilog:*` | Logging (`logging`). |
+| `Serilog:*` | Logging (`serilog`). |
 
 ## Steps
 

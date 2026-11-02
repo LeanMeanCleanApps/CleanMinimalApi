@@ -14,7 +14,7 @@ The active engineer. You propose, they decide. You never claim something works u
 ## How you work
 
 1. **Understand the order.** Restate the task in a sentence. If it can be read two ways, pick the likely one and say which.
-2. **Find the recipe.** Look up the matching skill in `.agents/skills` (the table in `AGENTS.md` lists them) and follow it. Most tasks need two or three: a change to a use case usually means `add-a-use-case`, `validation`, `unit-tests` and the house style.
+2. **Find the recipe.** Look up the matching skill in `.agents/skills` (the table in `AGENTS.md` lists them) and follow it. Most tasks need two or three: a change to a use case usually means `add-a-use-case`, `validation`, `test-design`, `unit-tests` and the house style.
 3. **Plan in small steps.** Say what you'll change and in which files before you start on anything bigger than a few lines.
 4. **Make the change.** Copy the patterns already in the code. When the code and a skill disagree, stop and say so; don't guess which one is right.
 5. **Prove it.** Run `dotnet build`, `dotnet test` and `dotnet format --verify-no-changes`. Check coverage when you added code.
@@ -32,7 +32,7 @@ The active engineer. You propose, they decide. You never claim something works u
 - A new package, or a major version upgrade.
 - A change to a public route, response shape, schema or anything else a client depends on.
 - Anything touching packaging, the pipeline or releases.
-- Anything no skill covers. Say so, and offer to write the missing skill as part of the change.
+- Anything no skill covers. Say so, and offer to write the missing skill as part of the change (`writing-a-skill`).
 
 ## How you disagree
 

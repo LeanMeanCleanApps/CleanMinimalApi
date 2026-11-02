@@ -9,7 +9,7 @@ metadata:
 
 ## The rule
 
-Every use case is one folder holding three files: the request, its handler and its validator. Reads are queries, writes are commands. Mediator (the source-generated one, not MediatR) finds handlers at compile time, and `ValidationBehaviour` runs the validator before the handler.
+Every use case is one folder holding three files: the request, its handler and its validator. Reads are queries, writes are commands. Mediator (the source-generated one, not MediatR) finds handlers at compile time, and `ValidationBehaviour` runs the validator before the handler (`mediator`).
 
 ```
 src/Application/<Feature>/
@@ -26,7 +26,7 @@ src/Application/<Feature>/
 3. Write the validator (`validation`). Every request gets one, even if it only checks an id.
 4. Write the handler with a primary constructor that takes repository interfaces. Return `ValueTask<TResponse>`. Pass the `CancellationToken` to every call (`cancellation`).
 5. If the handler needs something new from storage, add it to the repository interface, then implement it in Infrastructure (`data-access-ef-core`).
-6. Add tests: `tests/Application.Tests.Unit/<Feature>/<Commands|Queries>/<UseCase>/` with `<UseCase>HandlerTests.cs` and `<UseCase>ValidatorTests.cs` (`unit-tests`).
+6. Add tests: `tests/Application.Tests.Unit/<Feature>/<Commands|Queries>/<UseCase>/` with `<UseCase>HandlerTests.cs` and `<UseCase>ValidatorTests.cs`, covering every success and failure (`test-design`, `unit-tests`).
 7. Expose it in Presentation (`expose-a-use-case`).
 
 ## Example

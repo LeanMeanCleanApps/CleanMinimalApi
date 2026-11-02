@@ -25,7 +25,7 @@
   <PropertyGroup>
     <TemplateExcludes>../**/bin/**;../**/obj/**;../**/TestResults/**;../**/*.user;../**/.DS_Store</TemplateExcludes>
     <!-- Skills about the template repository itself (its pipeline, releases and the five-template family) stay out of generated solutions. -->
-    <RepositorySkills>../.agents/skills/branches-and-pull-requests/**;../.agents/skills/ci-pipeline/**;../.agents/skills/security-findings/**;../.agents/skills/docs-and-voice/**;../.agents/skills/template-authoring/**;../.agents/skills/family-sync/**;../.agents/skills/releases/**;../.agents/skills/writing-a-skill/**</RepositorySkills>
+    <RepositorySkills>../.agents/skills/branches-and-pull-requests/**;../.agents/skills/ci-pipeline/**;../.agents/skills/security-findings/**;../.agents/skills/docs-and-voice/**;../.agents/skills/template-authoring/**;../.agents/skills/family-sync/**;../.agents/skills/releases/**</RepositorySkills>
   </PropertyGroup>
 
   <ItemGroup>

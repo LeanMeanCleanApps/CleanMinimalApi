@@ -9,7 +9,7 @@ metadata:
 
 ## The rule
 
-xUnit for tests, Shouldly for assertions, NSubstitute for fakes. Test folders mirror the source folders. Each test has `// Arrange`, `// Act` and `// Assert` comments and tests one thing.
+xUnit for tests, Shouldly for assertions, NSubstitute for fakes. Test folders mirror the source folders. `test-design` says which tests a change needs; this skill says how to write them. Each test has `// Arrange`, `// Act` and `// Assert` comments and tests one thing.
 
 | Project | Tests |
 | --- | --- |

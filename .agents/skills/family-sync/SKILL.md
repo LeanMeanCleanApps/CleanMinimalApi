@@ -1,6 +1,6 @@
 ---
 name: family-sync
-description: How a shared change is carried to all five Lean Mean Clean Apps templates - which folders are shared, the namespace swap, opening the same branch everywhere, and proving the copies match. Use when you have changed the Application or Infrastructure layers, their tests, shared skills, AGENTS.md, the pipeline or repository setup.
+description: How a shared change is carried to all five Lean Mean Clean Apps templates - which folders are shared, the namespace swap, opening the same branch everywhere, keeping repository and maintainer skills out of the package, and proving the copies match. Use when you have changed the Application or Infrastructure layers, their tests, shared skills, AGENTS.md, the pipeline or repository setup.
 metadata:
   scope: maintainer
 ---
@@ -41,7 +41,8 @@ The five templates share everything except the Presentation layer. A shared chan
      | xargs sed -i "s/CleanMinimalApi/$NAME/g"
    ```
 
-3. Copy the shared skills and the persona the same way, then edit the Presentation rows of `AGENTS.md` by hand.
+3. Copy the shared skills and the persona the same way, then edit the Presentation rows of `AGENTS.md` by hand. A new `repository` or `maintainer` skill also goes in the `RepositorySkills` list in `template/template.csproj`, so it stays out of the package.
+   A presentation skill with the same name in every template (`expose-a-use-case`, `json-serialization`, `presentation-integration-tests`) is written for each template's own code, never copied.
 4. Prove they match with the commands under Check. There should be no differences.
 5. Build and test every template. Open the pull requests with the same title and description.
 

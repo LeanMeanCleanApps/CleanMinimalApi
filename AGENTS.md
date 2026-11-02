@@ -57,6 +57,7 @@ Each skill is a folder in `.agents/skills` with a `SKILL.md`. If your tool doesn
 | --- | --- |
 | `clean-architecture-layers` | Decide where new code belongs |
 | `add-a-use-case` | Add a command or query with its handler and validator |
+| `mediator` | Add a pipeline behaviour or change how requests are sent |
 | `validation` | Add or change validation rules |
 | `errors-and-exceptions` | Report not found or invalid input |
 | `paging` | Return a list |
@@ -65,19 +66,30 @@ Each skill is a folder in `.agents/skills` with a `SKILL.md`. If your tool doesn
 | `sample-data` | Change the seed data or test data |
 | `mapping-with-mapperly` | Map between database models and entities |
 | `cancellation` | Pass a cancellation token anywhere |
+| `time-provider` | Need the current date or time |
 | `configuration-and-environments` | Add a setting or work with environments |
-| `logging` | Log something |
+| `serilog` | Log something or change log settings |
 | `health-checks` | Change what liveness or readiness checks |
 | `optional-token-auth` | Protect an endpoint or change authentication |
 | `xml-docs-and-openapi` | Document a public type, endpoint or model |
 | `csharp-house-style` | Write any C# |
 | `packages-and-dependencies` | Add, update or remove a package |
 | `docker-and-compose` | Change the Dockerfile or compose file |
+| `test-design` | Decide which tests a change needs |
 | `unit-tests` | Test a handler, validator or endpoint |
 | `integration-tests` | Test the repository or a real HTTP request |
 | `coverage` | Check or fix line coverage |
+| `writing-a-skill` | Add or change a skill, or build a feature with a new pattern |
+
+These are for this Minimal API's presentation layer. The other templates have their own, with the same names where the job is the same:
+
+| Skill | Use it when you |
+| --- | --- |
 | `expose-a-use-case` | Put a use case on an endpoint |
 | `api-conventions` | Choose a route, status code or response shape |
+| `json-serialization` | Add a request or response type, or change how JSON looks |
+| `openapi-and-scalar` | Change the API description, security scheme or Scalar |
+| `presentation-integration-tests` | Write a test that makes a real HTTP request |
 
 These are for working on the template repository itself, and they aren't included in solutions created with `dotnet new`:
 
@@ -90,12 +102,12 @@ These are for working on the template repository itself, and they aren't include
 | `template-authoring` | Change `.template.config/` or the package |
 | `family-sync` | Carry a shared change to all five templates |
 | `releases` | Work with the monthly release |
-| `writing-a-skill` | Add or change a skill |
 
 ## Done means
 
 - [ ] The matching skill was followed, or updated in the same change if the way we do things changed.
 - [ ] `dotnet build`, `dotnet test` and `dotnet format --verify-no-changes` pass.
-- [ ] New behaviour has tests, and coverage stays at or above 95%.
+- [ ] New behaviour has tests for every success and failure (`test-design`), and coverage stays at or above 95%.
+- [ ] A feature that brings a new pattern has a skill for it (`writing-a-skill`).
 - [ ] Public types and endpoints have XML comments.
 - [ ] Docs are updated where behaviour changed.

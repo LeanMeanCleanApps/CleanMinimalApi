@@ -23,6 +23,7 @@ Integration tests use the real database engine, built from the real migrations, 
 3. For time-dependent results, assert against `this.database.TimeProvider`.
 4. Presentation tests: create a new application host per test class instance, pass settings in through its constructor, and make real requests. Assert the status code, then the body.
 5. Override settings in memory through the host's `settings` dictionary. Never edit appsettings files for a test.
+6. The details of this template's application host are in `presentation-integration-tests`.
 
 ## Example
 
