@@ -43,7 +43,6 @@ public static class WebApplicationExtensions
 
         #region Logging
 
-        _ = app.UseHttpLogging();
         _ = app.UseSerilogRequestLogging();
 
         #endregion Logging
