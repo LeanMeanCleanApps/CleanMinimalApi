@@ -10,7 +10,7 @@ using Microsoft.OpenApi;
 /// </summary>
 public sealed class DocumentInfoTransformer(IHostEnvironment environment) : IOpenApiDocumentTransformer
 {
-    private static readonly Uri RepositoryUrl = new("https://github.com/stphnwlsh/cleanminimalapi");
+    private static readonly Uri RepositoryUrl = new("https://github.com/LeanMeanCleanApps/CleanMinimalApi");
 
     public Task TransformAsync(OpenApiDocument document, OpenApiDocumentTransformerContext context, CancellationToken cancellationToken)
     {

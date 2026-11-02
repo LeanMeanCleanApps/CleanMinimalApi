@@ -64,15 +64,15 @@ A new version is released on the 1st of each month with every change merged sinc
 dotnet new update
 ```
 
-What changed in each version is in the [release notes](https://github.com/stphnwlsh/CleanMinimalApi/releases). To remove the template, run `dotnet new uninstall CleanMinimalApi.Template`.
+What changed in each version is in the [release notes](https://github.com/LeanMeanCleanApps/CleanMinimalApi/releases). To remove the template, run `dotnet new uninstall CleanMinimalApi.Template`.
 
 ## More help
 
 - [Docs site](https://leanmeancleanapps.github.io/minimalapi/) for guides, a reference and why it's built this way
-- [README on GitHub](https://github.com/stphnwlsh/CleanMinimalApi#readme) for the architecture, every feature and the Docker build options
-- [Running guide](https://github.com/stphnwlsh/CleanMinimalApi/blob/main/docs/RUN.md) for every way to run, configure and test the solution
-- [GitHub issues](https://github.com/stphnwlsh/CleanMinimalApi/issues) for bugs and ideas
-- [Security policy](https://github.com/stphnwlsh/CleanMinimalApi/security/policy) to report a vulnerability privately
+- [README on GitHub](https://github.com/LeanMeanCleanApps/CleanMinimalApi#readme) for the architecture, every feature and the Docker build options
+- [Running guide](https://github.com/LeanMeanCleanApps/CleanMinimalApi/blob/main/docs/RUN.md) for every way to run, configure and test the solution
+- [GitHub issues](https://github.com/LeanMeanCleanApps/CleanMinimalApi/issues) for bugs and ideas
+- [Security policy](https://github.com/LeanMeanCleanApps/CleanMinimalApi/security/policy) to report a vulnerability privately
 
 ## Support
 
