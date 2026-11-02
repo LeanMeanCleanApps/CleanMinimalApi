@@ -23,7 +23,7 @@ Settings that exist today:
 | --- | --- |
 | `ConnectionStrings:MovieReviews` | SQLite connection string. `Data Source=Name;Mode=Memory;Cache=Shared` keeps everything in memory. |
 | `Database:SeedSampleData` | Seed sample data into an empty database (`sample-data`). |
-| `Authentication:Authority`, `Authentication:Audience` | Turn on token authentication (`optional-token-auth`). |
+| `Authentication:Authority`, `Authentication:Audience` | Turn on token authentication (`optional-token-auth`). MCP also has `Authentication:Scopes`, published in its protected resource metadata. |
 | `Serilog:*` | Logging (`serilog`). |
 
 ## Steps

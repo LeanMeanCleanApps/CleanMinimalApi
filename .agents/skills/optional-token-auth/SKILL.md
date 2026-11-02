@@ -19,7 +19,7 @@ Settings are read through `AuthenticationSettings.FromConfiguration` (`Enabled` 
 
 1. A new endpoint or group gets `.RequireAuthorization()` (or the presentation layer's equivalent). That's the default; don't skip it.
 2. Only make something anonymous if it has to work without a token: health, the API reference, the version. Say why in a comment.
-3. When authentication is on, the OpenAPI document gets a bearer scheme so the API reference can send a token.
+3. When authentication is on, the template tells clients how to get a token: a bearer scheme in the OpenAPI document where a template has one, and the protected resource metadata in MCP.
 4. Test both modes: one test with no authority (anonymous works), one with an authority and no token (401).
 
 ## Don't
