@@ -19,7 +19,7 @@ public class VersionEndpointTests
         // Arrange
         var sender = Substitute.For<ISender>();
 
-        _ = sender.Send(Arg.Any<Queries.GetVersion.GetVersionQuery>()).ReturnsForAnyArgs(new Entities.Version
+        _ = sender.Send(Arg.Any<Queries.GetVersion.GetVersionQuery>()).ReturnsForAnyArgs(new Entities.VersionInfo
         {
             FileVersion = "1.2.3.4",
             InformationalVersion = "5.6.7.8"
@@ -29,11 +29,11 @@ public class VersionEndpointTests
         var response = await VersionEndpoints.GetVersion(sender, CancellationToken.None);
 
         // Assert
-        var result = response.ShouldBeOfType<Ok<Entities.Version>>();
+        var result = response.ShouldBeOfType<Ok<Entities.VersionInfo>>();
 
         result.StatusCode.ShouldBe(StatusCodes.Status200OK);
 
-        var value = result.Value.ShouldBeOfType<Entities.Version>();
+        var value = result.Value.ShouldBeOfType<Entities.VersionInfo>();
 
         _ = value.FileVersion.ShouldBeOfType<string>();
         value.FileVersion.ShouldBe("1.2.3.4");

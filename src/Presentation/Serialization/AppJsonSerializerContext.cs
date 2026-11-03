@@ -31,8 +31,8 @@ using Requests;
 [JsonSerializable(typeof(Page<Review>))]
 [JsonSerializable(typeof(ReviewAuthor))]
 [JsonSerializable(typeof(ReviewedMovie))]
-[JsonSerializable(typeof(Version))]
-[JsonSerializable(typeof(List<Version>))]
+[JsonSerializable(typeof(VersionInfo))]
+[JsonSerializable(typeof(List<VersionInfo>))]
 [JsonSerializable(typeof(CreateReviewRequest))]
 [JsonSerializable(typeof(UpdateReviewRequest))]
 public partial class AppJsonSerializerContext : JsonSerializerContext

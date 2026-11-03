@@ -18,7 +18,7 @@ public static class VersionEndpoints
 
         _ = root.MapGet("/", GetVersion)
             .WithName(nameof(GetVersion))
-            .Produces<Entities.Version>()
+            .Produces<Entities.VersionInfo>()
             .ProducesProblem(StatusCodes.Status500InternalServerError);
 
         return app;
@@ -36,7 +36,7 @@ public static class VersionEndpoints
     /// </remarks>
     /// <response code="200">The current application version details.</response>
     /// <response code="500">An unexpected error occurred.</response>
-    public static async Task<Ok<Entities.Version>> GetVersion([FromServices] ISender sender, CancellationToken cancellationToken)
+    public static async Task<Ok<Entities.VersionInfo>> GetVersion([FromServices] ISender sender, CancellationToken cancellationToken)
     {
         return TypedResults.Ok(await sender.Send(new Queries.GetVersion.GetVersionQuery(), cancellationToken));
     }
