@@ -29,6 +29,8 @@ Levels are set in appsettings, never in code: `Debug` by default, `Information` 
 
 Web templates log one line per request with `UseSerilogRequestLogging()`, under `Serilog.AspNetCore.RequestLoggingMiddleware`.
 
+The Lambda template doesn't register a logger yet. CloudWatch Logs keeps what the Lambda runtime writes, including any unhandled exception.
+
 ## Steps
 
 1. Take `ILogger<T>` through the constructor where you need it. Never reference Serilog types outside the presentation layer.
@@ -41,7 +43,7 @@ Web templates log one line per request with `UseSerilogRequestLogging()`, under 
 ## Example
 
 ```csharp
-// src/Presentation/Extensions/WebApplicationBuilderExtensions.cs
+// src/Presentation/Extensions, where startup registers services
 _ = builder.Services.AddSerilog((services, loggerConfiguration) =>
 {
     var assembly = Assembly.GetEntryAssembly();

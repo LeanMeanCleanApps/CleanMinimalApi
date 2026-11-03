@@ -11,6 +11,8 @@ metadata:
 
 Settings come from `appsettings.json`, then `appsettings.<environment>.json`, then environment variables (`Section__Key`). The base file holds safe defaults for anywhere; the environment files hold what's only true for that environment.
 
+The Lambda template has no appsettings files or environments. Its startup builds configuration from environment variables alone, so the same keys are set as `ConnectionStrings__MovieReviews` and `Database__SeedSampleData`, and the defaults live in `Startup`.
+
 | Environment | Set by | Used for |
 | --- | --- | --- |
 | `local` | `launchSettings.json` (`DOTNET_ENVIRONMENT=local`) | `dotnet run` on a developer machine: console logs, sample data on |
@@ -23,7 +25,7 @@ Settings that exist today:
 | --- | --- |
 | `ConnectionStrings:MovieReviews` | SQLite connection string. `Data Source=Name;Mode=Memory;Cache=Shared` keeps everything in memory. |
 | `Database:SeedSampleData` | Seed sample data into an empty database (`sample-data`). |
-| `Authentication:Authority`, `Authentication:Audience` | Turn on token authentication (`optional-token-auth`). |
+| `Authentication:Authority`, `Authentication:Audience` | Turn on token authentication (`optional-token-auth`). MCP also has `Authentication:Scopes`, published in its protected resource metadata. |
 | `Serilog:*` | Logging (`serilog`). |
 
 ## Steps
