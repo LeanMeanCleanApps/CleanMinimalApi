@@ -126,7 +126,7 @@ public class ReviewEndpointTests
 
         _ = sender
             .Send(Arg.Is<Commands.UpdateReview.UpdateReviewCommand>(c => c.Id == id && c.Stars == 4), token)
-            .Returns(true);
+            .Returns(new Entities.Review(id, 4));
 
         // Act
         var response = await ReviewEndpoints.UpdateReview(id, request, sender, token);
@@ -150,7 +150,7 @@ public class ReviewEndpointTests
 
         _ = sender
             .Send(Arg.Is<Commands.DeleteReview.DeleteReviewCommand>(c => c.Id == id), token)
-            .Returns(true);
+            .Returns(Unit.Value);
 
         // Act
         var response = await ReviewEndpoints.DeleteReview(id, sender, token);
