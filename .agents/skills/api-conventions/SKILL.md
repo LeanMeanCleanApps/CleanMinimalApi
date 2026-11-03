@@ -19,7 +19,7 @@ metadata:
 | Delete | `DELETE /{id}` returns `204` |
 | Invalid input | `400` with validation problem details (errors grouped by property) |
 | Not found | `404` problem details with a readable `detail` |
-| Unexpected | `500` problem details with no internals |
+| Unexpected | `500` problem details with no internals. `ApplicationExceptionHandler` logs the exception as `Error` (`serilog`) |
 | JSON | camelCase names, enums as camelCase strings, nulls left out, numbers strict (no numbers as strings) |
 | Auth | Every group calls `RequireAuthorization()`; only `/api/version` and health are anonymous (`optional-token-auth`) |
 | Tags | One OpenAPI tag per resource, set on the group with `WithTags` |
