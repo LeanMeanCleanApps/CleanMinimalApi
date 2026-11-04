@@ -51,7 +51,7 @@
       "type": "parameter",
       "datatype": "string",
       "displayName": "Token audience (optional)",
-      "description": "The audience access tokens must be issued for, usually the {noun}'s own URL. Not the people listening at home, though do say hi to Carl and Richard for us.",
+      "description": "The audience access tokens must be issued for, usually the API's own URL. Not the people listening at home, though do say hi to Carl and Richard for us.",
       "defaultValue": ""
     },
     "skipRestore": {

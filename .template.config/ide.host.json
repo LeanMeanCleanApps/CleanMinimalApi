@@ -28,7 +28,7 @@
         "text": "Token audience (optional)"
       },
       "description": {
-        "text": "Who the tokens are for, usually the {noun}'s own URL. Not the listeners at home."
+        "text": "Who the tokens are for, usually the API's own URL. Not the listeners at home."
       },
       "isVisible": true
     }
