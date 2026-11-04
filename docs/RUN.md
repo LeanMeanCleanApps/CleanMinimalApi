@@ -23,7 +23,7 @@ dotnet run --project ./src/Presentation
 
 ## Docker Compose
 
-`docker-compose.yml` starts the app and the [Aspire dashboard](https://learn.microsoft.com/dotnet/aspire/fundamentals/dashboard/standalone), which shows its logs, traces and metrics. The dashboard is only a container that receives OTLP; nothing in the solution depends on Aspire.
+`docker-compose.yml` starts the app and the [Aspire dashboard](https://learn.microsoft.com/dotnet/aspire/fundamentals/dashboard/standalone), which shows its logs, traces and metrics. The app sends everything to an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/), and the collector forwards it to the dashboard, the same shape as a production setup. The dashboard is only a container that receives OTLP; nothing in the solution depends on Aspire.
 
 ``` bash
 docker compose up -d --build
@@ -46,10 +46,12 @@ docker compose down
 
 The app always collects [OpenTelemetry](https://opentelemetry.io) traces and metrics, and exports them, along with its logs, only when `OTEL_EXPORTER_OTLP_ENDPOINT` is set. Every other standard `OTEL_*` variable works too, such as `OTEL_SERVICE_NAME`, `OTEL_EXPORTER_OTLP_PROTOCOL` and `OTEL_EXPORTER_OTLP_HEADERS`, so sending it to Grafana, Honeycomb, Seq or a collector is a settings change.
 
-To see a `dotnet run` in the dashboard, start only the dashboard and point the app at it:
+In production, send the app's telemetry to a collector rather than straight to a backend. Run one beside the app (a sidecar or agent) or as a shared gateway, and give it your backend's exporter. The collector then owns batching, retries, sampling and scrubbing, and changing backend never touches the app. `otel-collector.yaml` is a starting point: an OTLP receiver, the memory limiter and batch processors, and one exporter to swap.
+
+To see a `dotnet run` in the dashboard, start the collector and the dashboard, and point the app at the collector:
 
 ``` bash
-docker compose up -d aspire-dashboard
+docker compose up -d otel-collector
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 dotnet run --project ./src/Presentation
 ```
 

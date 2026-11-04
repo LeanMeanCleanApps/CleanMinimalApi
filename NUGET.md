@@ -27,7 +27,7 @@ cd Acme.Reviews
 ## Run it
 
 ```bash
-# Build the image and start it with sample data, plus the Aspire dashboard for its telemetry
+# Build the image and start it with sample data, plus a collector and the Aspire dashboard for its telemetry
 docker compose up -d --build
 
 # Ask it for a page of movies

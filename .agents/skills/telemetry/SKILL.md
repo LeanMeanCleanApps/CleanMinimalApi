@@ -37,7 +37,9 @@ What each presentation layer adds:
 | MCP | The same, plus the MCP SDK's own `Experimental.ModelContextProtocol` spans and `mcp.*.operation.duration` metrics |
 | Lambda | A span per invocation from `OpenTelemetry.Instrumentation.AWSLambda`, flushed before the function returns |
 
-Locally, Docker Compose runs the Aspire dashboard (`mcr.microsoft.com/dotnet/aspire-dashboard`) and points the app at it. It's only a container that receives OTLP and shows logs, traces and metrics at <http://localhost:18888>; it keeps everything in memory, so it's empty after a restart. Anything else that speaks OTLP can replace it without a code change.
+The app sends to an OpenTelemetry Collector, never straight to a backend, because that's how it should run in production: the collector owns batching, retries, sampling, scrubbing and the choice of backend, so none of that lives in the app. `otel-collector.yaml` holds its configuration: an OTLP receiver on 4317 (gRPC) and 4318 (HTTP), the `memory_limiter` and `batch` processors, and one exporter per backend.
+
+Locally, Docker Compose runs the collector (`otel/opentelemetry-collector`) and the Aspire dashboard (`mcr.microsoft.com/dotnet/aspire-dashboard`), and the collector forwards everything to the dashboard. The dashboard is only a container that receives OTLP and shows logs, traces and metrics at <http://localhost:18888>; it keeps everything in memory, so it's empty after a restart. In production, run a collector beside the app or as a gateway and swap the dashboard exporter for your backend's.
 
 ## Steps
 
@@ -47,7 +49,8 @@ Locally, Docker Compose runs the Aspire dashboard (`mcr.microsoft.com/dotnet/asp
 4. A new dependency in Infrastructure (a queue, an HTTP API) gets its spans from its own instrumentation package if a stable one exists. Subscribe to its source or meter name in the presentation layer's startup, and expose the name as a constant in `InfrastructureTelemetry`.
 5. Use stable packages only. When the only instrumentation is a prerelease package, write the small piece we need, as `DatabaseCommandInterceptor` does, and add it to the watch list below.
 6. Test spans with an `ActivityListener` that keeps only the test's own trace, and metrics with `MetricCollector<T>` from `Microsoft.Extensions.Diagnostics.Testing` (`unit-tests`). The integration tests send a `traceparent` header and check the request, use case and database spans join up.
-7. To see it locally, run `docker compose up -d --build` and open <http://localhost:18888>. For a `dotnet run`, start only the dashboard and set `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317`.
+7. To send telemetry somewhere new, add an exporter to `otel-collector.yaml` and list it in the pipelines. The app's settings don't change.
+8. To see it locally, run `docker compose up -d --build` and open <http://localhost:18888>. For a `dotnet run`, start the collector with `docker compose up -d otel-collector` and set `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317`.
 
 ## Example
 
@@ -69,8 +72,17 @@ if (activity is { IsAllDataRequested: true })
 ```yaml
 # docker-compose.yml
 environment:
-  OTEL_EXPORTER_OTLP_ENDPOINT: http://aspire-dashboard:18889
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
   OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+```
+
+```yaml
+# otel-collector.yaml
+exporters:
+  otlp_grpc/aspire:
+    endpoint: aspire-dashboard:18889
+    tls:
+      insecure: true
 ```
 
 ## Watch list
@@ -85,6 +97,7 @@ These signals and packages aren't stable for .NET yet. Check them when dependenc
 
 - Reference an OpenTelemetry, Aspire or vendor package from Application or Infrastructure. They publish with `System.Diagnostics`, and Presentation subscribes.
 - Export anywhere but OTLP, or hard-code an endpoint. Settings come from the `OTEL_*` variables.
+- Point the app straight at a backend, the dashboard included. It sends to a collector, and the collector decides where things go.
 - Add a prerelease package to get a signal.
 - Put ids, tokens or personal data in span names, tags or metric tags. `db.query.text` is safe only because EF Core sends parameters, not values.
 - Mark a span as an error for a validation failure or a missing entity. The caller got an answer; record a span event instead.
