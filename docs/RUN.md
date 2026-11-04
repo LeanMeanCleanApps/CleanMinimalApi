@@ -1,6 +1,6 @@
 # Running Clean Minimal API
 
-There are two pre-configured environments, `local` and `docker`. The matching `appsettings.*.json` files decide where logs go: the console when running locally, and a [Seq](https://datalust.co/seq) container when running in Docker.
+There are two pre-configured environments, `local` and `docker`. Logs go to the console in both. Traces, metrics and logs also leave over OTLP whenever `OTEL_EXPORTER_OTLP_ENDPOINT` is set, which Docker Compose does for you.
 
 ## Database
 
@@ -23,7 +23,7 @@ dotnet run --project ./src/Presentation
 
 ## Docker Compose
 
-`docker-compose.yml` starts the app and a Seq container for logs.
+`docker-compose.yml` starts the app and the [Aspire dashboard](https://learn.microsoft.com/dotnet/aspire/fundamentals/dashboard/standalone), which shows its logs, traces and metrics. The dashboard is only a container that receives OTLP; nothing in the solution depends on Aspire.
 
 ``` bash
 docker compose up -d --build
@@ -31,7 +31,7 @@ docker compose up -d --build
 
 - App: <http://localhost:8080/scalar> (Scalar API reference)
 - OpenAPI document: <http://localhost:8080/openapi/v1.json>
-- Seq: <http://localhost:5341>
+- Aspire dashboard: <http://localhost:18888>
 - Health checks: <http://localhost:8080/health/live> (the process is up) and <http://localhost:8080/health/ready> (the database can be reached). Both answer without a token. The image's `HEALTHCHECK` uses the live one.
 
 The container runs as the image's non-root `app` user.
@@ -41,6 +41,19 @@ To shut the containers down:
 ``` bash
 docker compose down
 ```
+
+## Telemetry
+
+The app always collects [OpenTelemetry](https://opentelemetry.io) traces and metrics, and exports them, along with its logs, only when `OTEL_EXPORTER_OTLP_ENDPOINT` is set. Every other standard `OTEL_*` variable works too, such as `OTEL_SERVICE_NAME`, `OTEL_EXPORTER_OTLP_PROTOCOL` and `OTEL_EXPORTER_OTLP_HEADERS`, so sending it to Grafana, Honeycomb, Seq or a collector is a settings change.
+
+To see a `dotnet run` in the dashboard, start only the dashboard and point the app at it:
+
+``` bash
+docker compose up -d aspire-dashboard
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 dotnet run --project ./src/Presentation
+```
+
+Every span, metric and log carries `service.version`, so you can always tell which build sent it.
 
 ## HTTPS
 
