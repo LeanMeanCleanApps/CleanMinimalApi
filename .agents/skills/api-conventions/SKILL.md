@@ -21,7 +21,7 @@ metadata:
 | Not found | `404` problem details with a readable `detail` |
 | Unexpected | `500` problem details with no internals. `ApplicationExceptionHandler` logs the exception as `Error` (`serilog`) |
 | JSON | camelCase names, enums as camelCase strings, nulls left out, numbers strict (no numbers as strings) |
-| Auth | Every group calls `RequireAuthorization()`; only `/api/version` and health are anonymous (`optional-token-auth`) |
+| Auth | Every group calls `RequireAuthorization()`; only health, the OpenAPI document and Scalar are anonymous (`optional-token-auth`) |
 | Tags | One OpenAPI tag per resource, set on the group with `WithTags` |
 
 Errors are RFC 9457 problem details, written by `ApplicationExceptionHandler` (`src/Presentation/Errors/`). `AddProblemDetails()` and `UseStatusCodePages()` make sure even framework errors (a bad route value, an unsupported media type) come back in the same shape.
