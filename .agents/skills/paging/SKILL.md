@@ -11,7 +11,7 @@ metadata:
 
 Every list is paged with an offset and a limit, and no endpoint returns an unbounded list. A repository is asked for a `PageRequest(Offset, Limit)` and returns a `Page<T>(Items, Offset, Limit, TotalCount)`, both from `src/Application/Common/Paging/`. Application owns that contract; Infrastructure turns it into `Skip` and `Take`, and each presentation maps it to and from its own wire shape. The default limit is `Paging.DefaultLimit` (10) and the maximum is `Paging.MaxLimit` (50). To get the next page, a caller adds the limit to the offset.
 
-Lists return summaries (`MovieSummary`, `AuthorSummary`) worked out in SQL, not full entities with their children. A by-id query returns the full entity.
+Lists return summaries (`MovieSummary`, `AuthorSummary`) worked out in SQL, not full entities with their children. A by-id query returns the full entity with all its children. That is a deliberate limit of the sample data model: when a parent can have many children, return its summary and page the children through their own list query instead.
 
 When one response holds a page of parents and each one needs its children, ask for the children of the whole page in one trip with `GetReviewsForMoviesQuery` or `GetReviewsForAuthorsQuery`. They take at most `Paging.MaxLimit` ids, which is one page, and return an entry for every id. GraphQL uses them in its DataLoaders and MCP uses them for `includeReviews`. The REST templates don't call them, because their lists return summaries and a by-id query loads its children with the parent, but they stay in Application so the shared layers match in every template.
 
