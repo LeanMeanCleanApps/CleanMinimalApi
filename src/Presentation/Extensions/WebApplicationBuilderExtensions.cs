@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Application;
 using Application.Common.Telemetry;
+using Application.Versions.Entities;
 using CleanMinimalApi.Presentation.Authentication;
 using CleanMinimalApi.Presentation.Errors;
 using CleanMinimalApi.Presentation.OpenApi;
@@ -149,6 +150,7 @@ public static class WebApplicationBuilderExtensions
         _ = builder.Services.AddMediator(options => options.ServiceLifetime = ServiceLifetime.Scoped);
         _ = builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("MovieReviews"));
         _ = builder.Services.AddApplication();
+        _ = builder.Services.AddSingleton(VersionInfo.FromAssembly(typeof(WebApplicationBuilderExtensions).Assembly));
         _ = builder.Services.AddHealthChecks().AddInfrastructureHealthChecks("ready");
 
         #endregion Project Dependencies
