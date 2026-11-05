@@ -16,8 +16,11 @@ public static class ReviewEndpoints
     public static WebApplication MapReviewEndpoints(this WebApplication app)
     {
         var root = app.MapGroup("/api/reviews")
-            .WithTags("Reviews")
-            .RequireAuthorization();
+            .WithTags("Reviews");
+#if includeAuth
+
+        _ = root.RequireAuthorization();
+#endif
 
         _ = root.MapGet("/", GetReviews)
             .WithName(nameof(GetReviews))

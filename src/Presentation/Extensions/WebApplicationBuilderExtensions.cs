@@ -6,8 +6,10 @@ using Application;
 using Application.Common.Telemetry;
 using Application.Versions.Entities;
 using Infrastructure;
+#if includeAuth
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+#endif
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +18,9 @@ using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+#if includeAuth
 using Presentation.Authentication;
+#endif
 using Presentation.Errors;
 using Presentation.OpenApi;
 using Presentation.Serialization;
@@ -45,10 +49,14 @@ public static class WebApplicationBuilderExtensions
                 })
                 .AddHttpClientInstrumentation(options => options.RecordException = true))
             .WithMetrics(metrics => metrics
+#if includeAuth
                 .AddMeter(
                     "Microsoft.EntityFrameworkCore",
                     "Microsoft.AspNetCore.Authentication",
                     "Microsoft.AspNetCore.Authorization")
+#else
+                .AddMeter("Microsoft.EntityFrameworkCore")
+#endif
                 .AddAspNetCoreInstrumentation()
                 .AddHttpClientInstrumentation()
                 .AddRuntimeInstrumentation()
@@ -100,6 +108,7 @@ public static class WebApplicationBuilderExtensions
 
         #region OpenApi
 
+#if includeAuth
         var authentication = AuthenticationSettings.FromConfiguration(builder.Configuration);
 
         _ = builder.Services.AddOpenApi(options =>
@@ -112,9 +121,13 @@ public static class WebApplicationBuilderExtensions
                 _ = options.AddOperationTransformer<BearerSecurityTransformer>();
             }
         });
+#else
+        _ = builder.Services.AddOpenApi(options => options.AddDocumentTransformer<DocumentInfoTransformer>());
+#endif
 
         #endregion OpenApi
 
+#if includeAuth
         #region Authentication
 
         if (authentication.Enabled)
@@ -138,6 +151,7 @@ public static class WebApplicationBuilderExtensions
 
         #endregion Authentication
 
+#endif
         #region Errors
 
         _ = builder.Services.AddProblemDetails();

@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+#if includeAuth
 using Presentation.Authentication;
+#endif
 using Presentation.Endpoints;
 using Scalar.AspNetCore;
 using Serilog;
@@ -48,6 +50,7 @@ public static class WebApplicationExtensions
 
         #endregion Errors
 
+#if includeAuth
         #region Authentication
 
         if (AuthenticationSettings.FromConfiguration(app.Configuration).Enabled)
@@ -59,11 +62,17 @@ public static class WebApplicationExtensions
 
         #endregion Authentication
 
+#endif
         #region Health
 
         // Liveness runs no checks, so it only fails when the process can't answer. Readiness checks the database.
+#if includeAuth
         _ = app.MapHealthChecks("/health/live", new HealthCheckOptions { Predicate = _ => false }).AllowAnonymous();
         _ = app.MapHealthChecks("/health/ready", new HealthCheckOptions { Predicate = check => check.Tags.Contains("ready") }).AllowAnonymous();
+#else
+        _ = app.MapHealthChecks("/health/live", new HealthCheckOptions { Predicate = _ => false });
+        _ = app.MapHealthChecks("/health/ready", new HealthCheckOptions { Predicate = check => check.Tags.Contains("ready") });
+#endif
 
         #endregion Health
 
