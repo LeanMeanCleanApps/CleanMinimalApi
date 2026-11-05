@@ -1,5 +1,5 @@
 using CleanMinimalApi.Presentation.Extensions;
-using Serilog;
+using Log = Serilog.Log;
 
 var builder = WebApplication
     .CreateBuilder(args)

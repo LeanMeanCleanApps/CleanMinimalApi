@@ -1,12 +1,12 @@
 namespace CleanMinimalApi.Presentation.Endpoints;
 
 using Application.Common.Paging;
-using CleanMinimalApi.Presentation.Requests;
 using Mediator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.Requests;
 using Commands = Application.Reviews.Commands;
 using Entities = Application.Reviews.Entities;
 using Queries = Application.Reviews.Queries;

@@ -1,8 +1,8 @@
 namespace CleanMinimalApi.Application.Tests.Unit.Common.Exceptions;
 
 using Application.Authors.Entities;
-using CleanMinimalApi.Application.Common.Enums;
-using CleanMinimalApi.Application.Common.Exceptions;
+using Application.Common.Enums;
+using Application.Common.Exceptions;
 using Shouldly;
 using Xunit;
 

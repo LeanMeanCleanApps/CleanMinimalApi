@@ -1,12 +1,12 @@
 namespace CleanMinimalApi.Presentation.Tests.Unit.OpenApi;
 
-using CleanMinimalApi.Presentation.OpenApi;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi;
 using NSubstitute;
+using Presentation.OpenApi;
 using Shouldly;
 using Xunit;
 

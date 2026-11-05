@@ -1,6 +1,6 @@
 namespace CleanMinimalApi.Presentation.Errors;
 
-using CleanMinimalApi.Application.Common.Exceptions;
+using Application.Common.Exceptions;
 using FluentValidation;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
