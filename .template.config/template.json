@@ -21,7 +21,7 @@
     "type": "solution"
   },
   "sourceName": "CleanMinimalApi",
-  "defaultName": "Acme.Movies",
+  "defaultName": "WorksOnMyMachine.Movies",
   "preferNameDirectory": true,
   "constraints": {
     "sdk": {
