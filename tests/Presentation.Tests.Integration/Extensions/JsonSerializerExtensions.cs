@@ -1,7 +1,7 @@
 namespace CleanMinimalApi.Presentation.Tests.Integration.Extensions;
 
 using System.Text.Json;
-using CleanMinimalApi.Presentation.Serialization;
+using Presentation.Serialization;
 
 public static class JsonSerializerExtensions
 {

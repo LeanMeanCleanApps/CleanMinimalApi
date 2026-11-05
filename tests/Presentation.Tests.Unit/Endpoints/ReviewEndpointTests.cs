@@ -1,14 +1,14 @@
 namespace CleanMinimalApi.Presentation.Tests.Unit.Endpoints;
 
 using System.Threading.Tasks;
-using CleanMinimalApi.Application.Authors.Entities;
-using CleanMinimalApi.Application.Common.Paging;
-using CleanMinimalApi.Application.Movies.Entities;
-using CleanMinimalApi.Presentation.Endpoints;
+using Application.Authors.Entities;
+using Application.Common.Paging;
+using Application.Movies.Entities;
 using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using NSubstitute;
+using Presentation.Endpoints;
 using Shouldly;
 using Xunit;
 using Commands = Application.Reviews.Commands;

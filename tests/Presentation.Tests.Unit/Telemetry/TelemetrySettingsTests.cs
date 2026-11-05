@@ -2,8 +2,8 @@ namespace CleanMinimalApi.Presentation.Tests.Unit.Telemetry;
 
 using System.Reflection;
 using System.Reflection.Emit;
-using CleanMinimalApi.Presentation.Telemetry;
 using Microsoft.Extensions.Configuration;
+using Presentation.Telemetry;
 using Shouldly;
 using Xunit;
 
