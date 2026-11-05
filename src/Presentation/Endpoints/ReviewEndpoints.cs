@@ -17,7 +17,7 @@ public static class ReviewEndpoints
     {
         var root = app.MapGroup("/api/reviews")
             .WithTags("Reviews");
-#if auth
+#if includeAuth
 
         _ = root.RequireAuthorization();
 #endif

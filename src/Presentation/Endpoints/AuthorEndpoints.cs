@@ -15,7 +15,7 @@ public static class AuthorEndpoints
     {
         var root = app.MapGroup("/api/authors")
             .WithTags("Authors");
-#if auth
+#if includeAuth
 
         _ = root.RequireAuthorization();
 #endif

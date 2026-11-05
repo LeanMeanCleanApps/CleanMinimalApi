@@ -15,7 +15,7 @@ public static class MovieEndpoints
     {
         var root = app.MapGroup("/api/movies")
             .WithTags("Movies");
-#if auth
+#if includeAuth
 
         _ = root.RequireAuthorization();
 #endif

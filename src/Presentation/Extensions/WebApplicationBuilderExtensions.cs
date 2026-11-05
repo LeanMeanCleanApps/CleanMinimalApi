@@ -5,7 +5,7 @@ using System.Reflection;
 using Application;
 using Application.Common.Telemetry;
 using Application.Versions.Entities;
-#if auth
+#if includeAuth
 using CleanMinimalApi.Presentation.Authentication;
 #endif
 using CleanMinimalApi.Presentation.Errors;
@@ -13,7 +13,7 @@ using CleanMinimalApi.Presentation.OpenApi;
 using CleanMinimalApi.Presentation.Serialization;
 using CleanMinimalApi.Presentation.Telemetry;
 using Infrastructure;
-#if auth
+#if includeAuth
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 #endif
@@ -49,7 +49,7 @@ public static class WebApplicationBuilderExtensions
                 })
                 .AddHttpClientInstrumentation(options => options.RecordException = true))
             .WithMetrics(metrics => metrics
-#if auth
+#if includeAuth
                 .AddMeter(
                     "Microsoft.EntityFrameworkCore",
                     "Microsoft.AspNetCore.Authentication",
@@ -108,7 +108,7 @@ public static class WebApplicationBuilderExtensions
 
         #region OpenApi
 
-#if auth
+#if includeAuth
         var authentication = AuthenticationSettings.FromConfiguration(builder.Configuration);
 
         _ = builder.Services.AddOpenApi(options =>
@@ -127,7 +127,7 @@ public static class WebApplicationBuilderExtensions
 
         #endregion OpenApi
 
-#if auth
+#if includeAuth
         #region Authentication
 
         if (authentication.Enabled)

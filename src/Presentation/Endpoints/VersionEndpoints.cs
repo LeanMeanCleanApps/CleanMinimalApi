@@ -14,7 +14,7 @@ public static class VersionEndpoints
     {
         var root = app.MapGroup("/api/version")
             .WithTags("Version");
-#if auth
+#if includeAuth
 
         _ = root.RequireAuthorization();
 #endif
