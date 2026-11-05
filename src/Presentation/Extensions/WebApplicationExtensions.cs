@@ -1,15 +1,15 @@
 namespace CleanMinimalApi.Presentation.Extensions;
 
 using System.Diagnostics.CodeAnalysis;
-#if includeAuth
-using CleanMinimalApi.Presentation.Authentication;
-#endif
-using CleanMinimalApi.Presentation.Endpoints;
 using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+#if includeAuth
+using Presentation.Authentication;
+#endif
+using Presentation.Endpoints;
 using Scalar.AspNetCore;
 using Serilog;
 

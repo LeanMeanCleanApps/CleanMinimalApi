@@ -1,7 +1,7 @@
 namespace CleanMinimalApi.Presentation.Tests.Unit.Serialization;
 
 using System.Text.Json;
-using CleanMinimalApi.Presentation.Serialization;
+using Presentation.Serialization;
 using Shouldly;
 using Xunit;
 

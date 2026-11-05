@@ -5,13 +5,6 @@ using System.Reflection;
 using Application;
 using Application.Common.Telemetry;
 using Application.Versions.Entities;
-#if includeAuth
-using CleanMinimalApi.Presentation.Authentication;
-#endif
-using CleanMinimalApi.Presentation.Errors;
-using CleanMinimalApi.Presentation.OpenApi;
-using CleanMinimalApi.Presentation.Serialization;
-using CleanMinimalApi.Presentation.Telemetry;
 using Infrastructure;
 #if includeAuth
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -25,6 +18,13 @@ using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+#if includeAuth
+using Presentation.Authentication;
+#endif
+using Presentation.Errors;
+using Presentation.OpenApi;
+using Presentation.Serialization;
+using Presentation.Telemetry;
 using Serilog;
 
 [ExcludeFromCodeCoverage]
