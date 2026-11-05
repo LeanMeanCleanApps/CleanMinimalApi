@@ -5,14 +5,18 @@ using System.Reflection;
 using Application;
 using Application.Common.Telemetry;
 using Application.Versions.Entities;
+#if auth
 using CleanMinimalApi.Presentation.Authentication;
+#endif
 using CleanMinimalApi.Presentation.Errors;
 using CleanMinimalApi.Presentation.OpenApi;
 using CleanMinimalApi.Presentation.Serialization;
 using CleanMinimalApi.Presentation.Telemetry;
 using Infrastructure;
+#if auth
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+#endif
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.Extensions.Configuration;
@@ -45,10 +49,14 @@ public static class WebApplicationBuilderExtensions
                 })
                 .AddHttpClientInstrumentation(options => options.RecordException = true))
             .WithMetrics(metrics => metrics
+#if auth
                 .AddMeter(
                     "Microsoft.EntityFrameworkCore",
                     "Microsoft.AspNetCore.Authentication",
                     "Microsoft.AspNetCore.Authorization")
+#else
+                .AddMeter("Microsoft.EntityFrameworkCore")
+#endif
                 .AddAspNetCoreInstrumentation()
                 .AddHttpClientInstrumentation()
                 .AddRuntimeInstrumentation()
@@ -100,6 +108,7 @@ public static class WebApplicationBuilderExtensions
 
         #region OpenApi
 
+#if auth
         var authentication = AuthenticationSettings.FromConfiguration(builder.Configuration);
 
         _ = builder.Services.AddOpenApi(options =>
@@ -112,9 +121,13 @@ public static class WebApplicationBuilderExtensions
                 _ = options.AddOperationTransformer<BearerSecurityTransformer>();
             }
         });
+#else
+        _ = builder.Services.AddOpenApi(options => options.AddDocumentTransformer<DocumentInfoTransformer>());
+#endif
 
         #endregion OpenApi
 
+#if auth
         #region Authentication
 
         if (authentication.Enabled)
@@ -138,6 +151,7 @@ public static class WebApplicationBuilderExtensions
 
         #endregion Authentication
 
+#endif
         #region Errors
 
         _ = builder.Services.AddProblemDetails();

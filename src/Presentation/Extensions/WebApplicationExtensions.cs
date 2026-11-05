@@ -1,7 +1,9 @@
 namespace CleanMinimalApi.Presentation.Extensions;
 
 using System.Diagnostics.CodeAnalysis;
+#if auth
 using CleanMinimalApi.Presentation.Authentication;
+#endif
 using CleanMinimalApi.Presentation.Endpoints;
 using Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -48,6 +50,7 @@ public static class WebApplicationExtensions
 
         #endregion Errors
 
+#if auth
         #region Authentication
 
         if (AuthenticationSettings.FromConfiguration(app.Configuration).Enabled)
@@ -59,11 +62,17 @@ public static class WebApplicationExtensions
 
         #endregion Authentication
 
+#endif
         #region Health
 
         // Liveness runs no checks, so it only fails when the process can't answer. Readiness checks the database.
+#if auth
         _ = app.MapHealthChecks("/health/live", new HealthCheckOptions { Predicate = _ => false }).AllowAnonymous();
         _ = app.MapHealthChecks("/health/ready", new HealthCheckOptions { Predicate = check => check.Tags.Contains("ready") }).AllowAnonymous();
+#else
+        _ = app.MapHealthChecks("/health/live", new HealthCheckOptions { Predicate = _ => false });
+        _ = app.MapHealthChecks("/health/ready", new HealthCheckOptions { Predicate = check => check.Tags.Contains("ready") });
+#endif
 
         #endregion Health
 
