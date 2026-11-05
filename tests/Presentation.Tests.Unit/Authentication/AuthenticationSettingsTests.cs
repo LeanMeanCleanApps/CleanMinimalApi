@@ -1,7 +1,7 @@
 namespace CleanMinimalApi.Presentation.Tests.Unit.Authentication;
 
-using CleanMinimalApi.Presentation.Authentication;
 using Microsoft.Extensions.Configuration;
+using Presentation.Authentication;
 using Shouldly;
 using Xunit;
 

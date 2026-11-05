@@ -1,12 +1,12 @@
 namespace CleanMinimalApi.Presentation.Tests.Unit.Endpoints;
 
 using System.Threading.Tasks;
-using CleanMinimalApi.Application.Common.Paging;
-using CleanMinimalApi.Presentation.Endpoints;
+using Application.Common.Paging;
 using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using NSubstitute;
+using Presentation.Endpoints;
 using Shouldly;
 using Xunit;
 using Entities = Application.Authors.Entities;
