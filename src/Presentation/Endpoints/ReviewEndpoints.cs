@@ -151,7 +151,8 @@ public static class ReviewEndpoints
         {
             AuthorId = request.AuthorId,
             MovieId = request.MovieId,
-            Stars = request.Stars
+            Stars = request.Stars,
+            Text = request.Text
         }, cancellationToken);
 
         return TypedResults.CreatedAtRoute(response, nameof(GetReviewById), new { id = response.Id });
@@ -186,7 +187,8 @@ public static class ReviewEndpoints
         _ = await sender.Send(new Commands.UpdateReview.UpdateReviewCommand
         {
             Id = id,
-            Stars = request.Stars
+            Stars = request.Stars,
+            Text = request.Text
         }, cancellationToken);
 
         return TypedResults.NoContent();
