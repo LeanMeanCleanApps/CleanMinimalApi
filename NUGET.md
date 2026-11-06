@@ -25,6 +25,8 @@ dotnet new cleanminimalapi --name WorksOnMyMachine.Movies --authorName "Your Nam
 cd WorksOnMyMachine.Movies
 ```
 
+`cleanminimal` works too, for anyone who'd rather not type `cleanminimalapi` every time, and so do `lmca-minimalapi` and `leanmeancleanapps-minimalapi`. `dotnet new search leanmeanclean` lists the whole family.
+
 | Option | Default | What it does |
 | --- | --- | --- |
 | `--name`, `-n` | The folder's name | Names the solution and its root namespace |
