@@ -26,7 +26,7 @@ Scalar is set up in `WebApplicationExtensions.ConfigureApplication` with the tit
 2. Something every operation needs goes in an operation transformer; something about the whole API goes in a document transformer. Register it in `AddOpenApi` in `WebApplicationBuilderExtensions`.
 3. Transformers are classes implementing `IOpenApiDocumentTransformer` or `IOpenApiOperationTransformer`, `sealed`, with XML docs. Unit test them in `tests/Presentation.Tests.Unit/OpenApi/`.
 4. When you add an endpoint, update the operation count in `GetOpenApiDocument_ShouldDescribe_EveryOperation`.
-5. Run the app and read the result at <http://localhost:8710/scalar>.
+5. Run the app and read the result at <http://localhost:7310/scalar>.
 
 ## Example
 
@@ -68,5 +68,5 @@ _ = app.MapScalarApiReference(options => options
 
 ``` bash
 dotnet test --filter "FullyQualifiedName~OpenApi"
-dotnet run --project ./src/Presentation   # then open http://localhost:8710/scalar
+dotnet run --project ./src/Presentation   # then open http://localhost:7310/scalar
 ```
