@@ -7,6 +7,7 @@
     "API",
     "Service",
     "Minimal API",
+    "Lean Mean Clean Apps",
     "Clean Architecture"
   ],
   "identity": "CleanMinimalApi.Template",
@@ -15,7 +16,12 @@
   "precedence": "100",
   "name": "Clean Minimal API Template",
   "description": "An ASP.NET Core Minimal API on .NET 10, built with Clean Architecture minus the ceremony.",
-  "shortName": "cleanminimalapi",
+  "shortName": [
+    "cleanminimalapi",
+    "cleanminimal",
+    "lmca-minimalapi",
+    "leanmeancleanapps-minimalapi"
+  ],
   "tags": {
     "language": "C#",
     "type": "solution"
