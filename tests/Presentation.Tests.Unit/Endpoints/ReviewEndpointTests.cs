@@ -41,7 +41,7 @@ public class ReviewEndpointTests
             .Returns(new Page<Entities.Review>([Review], 20, 5, 21));
 
         // Act
-        var response = await ReviewEndpoints.GetReviews(movieId, authorId, sender, token, 20, 5);
+        var response = await ReviewEndpoints.GetReviews(movieId, authorId, sender, token, offset: 20, limit: 5);
 
         // Assert
         var result = response.ShouldBeOfType<Ok<Page<Entities.Review>>>();
