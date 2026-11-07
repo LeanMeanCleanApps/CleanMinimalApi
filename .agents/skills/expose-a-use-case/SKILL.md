@@ -66,5 +66,5 @@ public static async Task<CreatedAtRoute<Entities.Review>> CreateReview(
 ``` bash
 dotnet test tests/Presentation.Tests.Unit
 dotnet test tests/Presentation.Tests.Integration
-dotnet run --project ./src/Presentation   # then read the endpoint at http://localhost:8080/scalar
+dotnet run --project ./src/Presentation   # then read the endpoint at http://localhost:7310/scalar
 ```
