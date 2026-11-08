@@ -31,7 +31,8 @@ Endpoints live in `src/Presentation/Endpoints/<Feature>Endpoints.cs`, one static
 6. Add every new request or response type to `AppJsonSerializerContext` (`src/Presentation/Serialization/`) with `[JsonSerializable(typeof(...))]`, including `Page<T>` and `List<T>` forms (`json-serialization`).
 7. Document the method: `<summary>` (short, title case, shown as the operation name), `<remarks>` with a sentence or two and a sample request, `<param>` for each input except `sender` and the token, and a `<response code="...">` for each status.
 8. A new endpoints class is mapped in `WebApplicationExtensions.ConfigureApplication` under `#region MinimalApi`.
-9. Test it twice: a unit test calling the static method with a faked `ISender` (`tests/Presentation.Tests.Unit/Endpoints/`), and an integration test making the real request (`tests/Presentation.Tests.Integration/Endpoints/`, see `presentation-integration-tests`). Cover every documented status code (`test-design`).
+9. Add a sample request for the endpoint to `src/Presentation/Presentation.http`.
+10. Test it twice: a unit test calling the static method with a faked `ISender` (`tests/Presentation.Tests.Unit/Endpoints/`), and an integration test making the real request (`tests/Presentation.Tests.Integration/Endpoints/`, see `presentation-integration-tests`). Cover every documented status code (`test-design`).
 
 ## Example
 
