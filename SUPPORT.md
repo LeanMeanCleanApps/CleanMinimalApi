@@ -2,14 +2,14 @@
 
 ## Getting help
 
-- **Using the template:** start with the [docs site](https://leanmeancleanapps.github.io/minimalapi/) and its [troubleshooting page](https://leanmeancleanapps.github.io/minimalapi/reference/troubleshooting/), then the [README](README.md) and [docs/RUN.md](docs/RUN.md). They're long because they answer the questions people actually ask.
+- **Using the template:** start with the [docs site](https://leanmeanclean.dev/minimalapi/) and its [troubleshooting page](https://leanmeanclean.dev/minimalapi/reference/troubleshooting/), then the [README](README.md) and [docs/RUN.md](docs/RUN.md). They're long because they answer the questions people actually ask.
 - **Can't get the template installed, or a new solution to build or run?** Open a [template creation problem](https://github.com/LeanMeanCleanApps/CleanMinimalApi/issues/new?template=template_problem.yml).
 - **Found a bug?** Open a [bug report](https://github.com/LeanMeanCleanApps/CleanMinimalApi/issues/new?template=bug_report.yml). A clear title and a way to reproduce it will get you a faster answer than a long story.
 - **Docs wrong, missing or out of date?** Open a [docs problem](https://github.com/LeanMeanCleanApps/CleanMinimalApi/issues/new?template=docs_problem.yml), or just send a pull request.
 - **Have an idea?** Open a [feature request](https://github.com/LeanMeanCleanApps/CleanMinimalApi/issues/new?template=feature_request.yml).
 - **Found a security vulnerability?** Don't open an issue. Follow the [security policy](SECURITY.md).
 
-This is a [Lean Mean Clean Apps](https://leanmeancleanapps.github.io/) project, looked after in spare time by a team that is currently one person with a day job and a coffee habit, so responses are best effort. They do arrive.
+This is a [Lean Mean Clean Apps](https://leanmeanclean.dev/) project, looked after in spare time by a team that is currently one person with a day job and a coffee habit, so responses are best effort. They do arrive.
 
 ## Supporting the project
 

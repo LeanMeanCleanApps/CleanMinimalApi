@@ -12,7 +12,7 @@ public sealed class DocumentInfoTransformer(IHostEnvironment environment) : IOpe
 {
     // The docs site, not the repository: dotnet new renames the template's name wherever it appears,
     // so a repository link would point at a repository that doesn't exist in a new solution.
-    private static readonly Uri DocumentationUrl = new("https://leanmeancleanapps.github.io/minimalapi/");
+    private static readonly Uri DocumentationUrl = new("https://leanmeanclean.dev/minimalapi/");
 
     public Task TransformAsync(OpenApiDocument document, OpenApiDocumentTransformerContext context, CancellationToken cancellationToken)
     {

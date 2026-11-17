@@ -2,15 +2,15 @@
 
 A `dotnet new` template for an HTTP API using ASP.NET Core [Minimal APIs](https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis) in .NET 10, built with a streamlined Clean Architecture. All the layers you need, none of the ceremony you don't.
 
-It's one of five [Lean Mean Clean Apps](https://leanmeancleanapps.github.io/) templates, for Minimal APIs, Model Context Protocol, GraphQL, Web API controllers and AWS Lambda. They share the same Application and Infrastructure layers and differ only in how they face the world. The full docs live at [leanmeancleanapps.github.io/minimalapi](https://leanmeancleanapps.github.io/minimalapi/).
+It's one of five [Lean Mean Clean Apps](https://leanmeanclean.dev/) templates, for Minimal APIs, Model Context Protocol, GraphQL, Web API controllers and AWS Lambda. They share the same Application and Infrastructure layers and differ only in how they face the world. The full docs live at [leanmeanclean.dev/minimalapi](https://leanmeanclean.dev/minimalapi/).
 
 | Template | Presentation | Package | Docs |
 | --- | --- | --- | --- |
-| **Clean Minimal API** | ASP.NET Core Minimal APIs, you are here | [CleanMinimalApi.Template](https://www.nuget.org/packages/CleanMinimalApi.Template) | [Docs](https://leanmeancleanapps.github.io/minimalapi/) |
-| Clean Model Context Protocol | Model Context Protocol server | [CleanModelContextProtocol.Template](https://www.nuget.org/packages/CleanModelContextProtocol.Template) | [Docs](https://leanmeancleanapps.github.io/mcp/) |
-| Clean GraphQL API | GraphQL with Hot Chocolate | [CleanGraphQLApi.Template](https://www.nuget.org/packages/CleanGraphQLApi.Template) | [Docs](https://leanmeancleanapps.github.io/graphql/) |
-| Clean Web API | ASP.NET Core controllers | [CleanWebApi.Template](https://www.nuget.org/packages/CleanWebApi.Template) | [Docs](https://leanmeancleanapps.github.io/webapi/) |
-| Clean Lambda Function | AWS Lambda | [CleanLambdaFunction.Template](https://www.nuget.org/packages/CleanLambdaFunction.Template) | [Docs](https://leanmeancleanapps.github.io/lambda/) |
+| **Clean Minimal API** | ASP.NET Core Minimal APIs, you are here | [CleanMinimalApi.Template](https://www.nuget.org/packages/CleanMinimalApi.Template) | [Docs](https://leanmeanclean.dev/minimalapi/) |
+| Clean Model Context Protocol | Model Context Protocol server | [CleanModelContextProtocol.Template](https://www.nuget.org/packages/CleanModelContextProtocol.Template) | [Docs](https://leanmeanclean.dev/mcp/) |
+| Clean GraphQL API | GraphQL with Hot Chocolate | [CleanGraphQLApi.Template](https://www.nuget.org/packages/CleanGraphQLApi.Template) | [Docs](https://leanmeanclean.dev/graphql/) |
+| Clean Web API | ASP.NET Core controllers | [CleanWebApi.Template](https://www.nuget.org/packages/CleanWebApi.Template) | [Docs](https://leanmeanclean.dev/webapi/) |
+| Clean Lambda Function | AWS Lambda | [CleanLambdaFunction.Template](https://www.nuget.org/packages/CleanLambdaFunction.Template) | [Docs](https://leanmeanclean.dev/lambda/) |
 
 ## Get started
 
@@ -73,7 +73,7 @@ dotnet new update
 
 ## More help
 
-- [Docs](https://leanmeancleanapps.github.io/minimalapi/) for guides, a reference and why it's built this way
+- [Docs](https://leanmeanclean.dev/minimalapi/) for guides, a reference and why it's built this way
 - [GitHub](https://github.com/LeanMeanCleanApps/CleanMinimalApi) for the code, [issues](https://github.com/LeanMeanCleanApps/CleanMinimalApi/issues) and [release notes](https://github.com/LeanMeanCleanApps/CleanMinimalApi/releases)
 - [Security policy](https://github.com/LeanMeanCleanApps/CleanMinimalApi/security/policy) to report a vulnerability privately
 
