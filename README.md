@@ -28,11 +28,11 @@ cd WorksOnMyMachine.Movies
 
 | Option | Default | What it does |
 | --- | --- | --- |
-| `--name`, `-n` | The folder's name | Names the solution and its root namespace |
-| `--authorName`, `-an` | `Stephen Walsh` | Puts your name on the assembly instead of ours |
+| `--name`<br>`-n` | The folder's name | Names the solution and its root namespace |
+| `--authorName`<br>`-an` | `Stephen Walsh` | Puts your name on the assembly instead of ours |
 | `--include-auth` | Off | Adds JWT bearer token authentication. Leave it out and the API has no auth code at all |
-| `--authority`, `-iss` | Empty | Your OAuth authorization server. Required with `--include-auth` |
-| `--audience`, `-aud` | Empty | The audience tokens must be issued for, usually the API's own URL. Only used with `--include-auth` |
+| `--authority`<br>`-iss` | Empty | Your OAuth authorization server. Required with `--include-auth` |
+| `--audience`<br>`-aud` | Empty | The audience tokens must be issued for, usually the API's own URL. Only used with `--include-auth` |
 | `--no-restore` | Off | Skips the package restore that normally runs once the solution is created |
 
 Rather click than type? Visual Studio and Rider show the same options in their new project dialogs. They always show the authority and audience fields, but only use them when **Include authentication** is ticked. In the terminal, `dotnet new cleanminimalapi --help` lists them all.
@@ -123,7 +123,7 @@ dotnet new update
 
 ## Contributing
 
-Bug reports, ideas and pull requests are all welcome, and typo fixes doubly so. Start with the [contributing guide](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md). Security problems go through the [security policy](SECURITY.md), not an issue.
+Bug reports, ideas and pull requests are all welcome, and typo fixes doubly so. Start with the [contributing guide](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md). Security problems go through the [security policy](SECURITY.md), not an issue. Questions go to [Discussions](https://github.com/orgs/LeanMeanCleanApps/discussions), and if anything here gets in your way, the [accessibility statement](ACCESSIBILITY.md) says how to tell us.
 
 ## Who built this
 
