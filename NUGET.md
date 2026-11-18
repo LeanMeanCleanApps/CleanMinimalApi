@@ -27,14 +27,14 @@ cd WorksOnMyMachine.Movies
 
 `cleanminimal` works too, for anyone who'd rather not type `cleanminimalapi` every time, and so do `lmca-minimalapi` and `leanmeancleanapps-minimalapi`. `dotnet new search leanmeanclean` lists the whole family.
 
-| Option | Default | What it does |
-| --- | --- | --- |
-| `--name`, `-n` | The folder's name | Names the solution and its root namespace |
-| `--authorName`, `-an` | `Stephen Walsh` | Puts your name on the assembly instead of ours |
-| `--include-auth` | Off | Adds JWT bearer token authentication. Leave it out and the API has no auth code at all |
-| `--authority`, `-iss` | Empty | Your OAuth authorization server. Required with `--include-auth` |
-| `--audience`, `-aud` | Empty | The audience tokens must be issued for, usually the API's own URL. Only used with `--include-auth` |
-| `--no-restore` | Off | Skips the package restore that normally runs once the solution is created |
+| Option | Short | Default | What it does |
+| --- | --- | --- | --- |
+| `--name` | `-n` | The folder's name | Names the solution and its root namespace |
+| `--authorName` | `-an` | `Stephen Walsh` | Puts your name on the assembly instead of ours |
+| `--include-auth` | | Off | Adds JWT bearer token authentication. Leave it out and the API has no auth code at all |
+| `--authority` | `-iss` | Empty | Your OAuth authorization server. Required with `--include-auth` |
+| `--audience` | `-aud` | Empty | The audience tokens must be issued for, usually the API's own URL. Only used with `--include-auth` |
+| `--no-restore` | | Off | Skips the package restore that normally runs once the solution is created |
 
 Rather click than type? Visual Studio and Rider show the same options in their new project dialogs. They always show the authority and audience fields, but only use them when **Include authentication** is ticked. In the terminal, `dotnet new cleanminimalapi --help` lists them all.
 
